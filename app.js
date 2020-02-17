@@ -37,7 +37,7 @@ const params = {
 		contentType: 'image/jpeg',
 	  }
 	],
-  collectionIds: ['5826c5ec-6f86-44b1-ab2b-cca6c75f2fc7'],
+  collectionIds: ['{model_id}'],
   features: ['objects'],
 };
 
