@@ -1,0 +1,18 @@
+{
+  "engines": {
+    "node": "^4"
+  },
+  "name": "dashdbnodesample",
+  "version": "0.0.1",
+  "description": "A sample node app for connecting to dashDB service on Bluemix",
+  "dependencies": {
+    "watson-developer-cloud": "*"
+  },
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/IBM-Bluemix/dashdb-nodejs-helloworld"
+  }
+}
