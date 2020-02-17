@@ -14,30 +14,37 @@
 // limitations under the License.
 //------------------------------------------------------------------------------
 
-var VisualRecognitionV3 = require('watson-developer-cloud/visual-recognition/v3');
-var fs = require('fs');
+const fs = require('fs');
+const VisualRecognitionV4 = require('ibm-watson/visual-recognition/v4');
+const { IamAuthenticator } = require('ibm-watson/auth');
 
-var visualRecognition = new VisualRecognitionV3({
-	version: '2018-03-19',
-	iam_apikey: '{iam_api_key}'
+const visualRecognition = new VisualRecognitionV4({
+  version: '2019-02-11',
+  authenticator: new IamAuthenticator({
+    apikey: '{apikey}'
+  }),
+  url: '{url}',
 });
 
-var images_file= fs.createReadStream('./fruitbowl.jpg');
-var classifier_ids = ["MyBottleModel_290228105"];
-var threshold = 0.6;
-
-var params = {
-	images_file: images_file,
-	classifier_ids: classifier_ids,
-	threshold: threshold
+const params = {
+  imagesFile: [
+    {
+		data: fs.createReadStream('./data/ThumbUp-test.jpeg'),
+		contentType: 'image/jpeg',
+	  },
+	  {
+		data: fs.createReadStream('./data/ThumbDown-test.jpeg'),
+		contentType: 'image/jpeg',
+	  }
+	],
+  collectionIds: ['5826c5ec-6f86-44b1-ab2b-cca6c75f2fc7'],
+  features: ['objects'],
 };
 
-visualRecognition.classify(params, function(err, response) {
-	if (err) { 
-		console.log(err);
-	} else {
-		console.log(JSON.stringify(response, null, 2))
-	}
-});
-
-
+visualRecognition.analyze(params)
+  .then(response => {
+    console.log(JSON.stringify(response.result, null, 2));
+  })
+  .catch(err => {
+    console.log('error: ', err);
+  });
