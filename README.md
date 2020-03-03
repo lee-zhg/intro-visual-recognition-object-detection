@@ -110,7 +110,7 @@ To add tarining photos to the `Waston Studio` project as `data assets`,
     * data/ThumbUp.zip
     * data/ThumbDown.zip
 
-1. You have to load file one at a time. You have two data assets ready to build your custom model after you completed the loading.
+1. After loading data, you should have two data assets ready to build your custom model after you completed the loading.
 
     ![Data Asset 04](docs/images/datassets05.png)
 
@@ -131,7 +131,7 @@ To create a custom visual recognition object detection model,
 
     ![Custom Model 02](docs/images/custommodel02.png)
 
-1. Rename `New-Collection` to `ThumbUp`.
+1. Rename `New-Collection` to `Thumb`.
 
     ![Custom Model 03](docs/images/custommodel03.png)
 
@@ -201,7 +201,7 @@ To create a custom visual recognition object detection model,
 
     ![Custom Model 08](docs/images/custommodel08.png)
 
-1. If you did everything correctly, you should have
+1. Up to this point, you should have
 
     * totally 30 images
     * 15 of them are `ThumbUp`
@@ -279,7 +279,7 @@ To call your custom model API via `Curl`,
 1. Classify an image via POST API
 
     ```
-    curl -X POST -u "apikey:{apikey}" -F "features=objects" -F "collection_ids=50269437-a198-47eb-b29d-b63f3eac6b01" -F "images_file=@<PATH of your downloaded repo folder>/intro-visual-recognition-object-detection/data/ThumbUp-test.jpeg" -F "images_file=@<PATH of your downloaded repo folder>/intro-visual-recognition-object-detection/data/ThumbDown-test.jpeg" "https://gateway.watsonplatform.net/visual-recognition/api/v4/analyze?version=2019-02-11"
+    curl -X POST -u "apikey:{apikey}" -F "features=objects" -F "collection_ids=50269437-a198-47eb-b29d-b63f3eac6b01" -F "images_file=@data/ThumbUp-test.jpeg" -F "images_file=@data/ThumbDown-test.jpeg" "https://gateway.watsonplatform.net/visual-recognition/api/v4/analyze?version=2019-02-11"
     ```
 
     >Note: Replace `{apikey}` with the `apikey` of your `Visual Recognition` instance.
