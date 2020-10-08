@@ -276,15 +276,25 @@ To call your custom model API via `Curl`,
     cd <PATH>/intro-visual-recognition-object-detection
     ```
 
+1. Store `apikey` of your `Visual Recognition` instance to an environment variable.
+
+    ```
+    export apikey=UmRJdqeswZDtCb_Pwz6F018ZDkDeExsOO0P4fJEan8Qr9Xaw
+    ```
+
+1. Store `Model ID` of your deployed `Visual Recognition` model to an environment variable.
+
+    ```
+    export model_id=f6b67058-c322-4d1d-a66f-7fd4e55fe39d
+    ```
+
+    > Note: `f6b67058-c322-4d1d-a66f-7fd4e55fe39d` is the custom model ID. Replace it with your custom model ID which can be found on the `Overview` tab of your custom model.
+
 1. Classify an image via POST API
 
     ```
-    curl -X POST -u "apikey:{apikey}" -F "features=objects" -F "collection_ids=50269437-a198-47eb-b29d-b63f3eac6b01" -F "images_file=@data/ThumbUp-test.jpeg" -F "images_file=@data/ThumbDown-test.jpeg" "https://gateway.watsonplatform.net/visual-recognition/api/v4/analyze?version=2019-02-11"
+    curl -X POST -u "apikey:$apikey" -F "features=objects" -F "collection_ids=$model_id" -F "images_file=@data/ThumbUp-test.jpeg" -F "images_file=@data/ThumbDown-test.jpeg" "https://gateway.watsonplatform.net/visual-recognition/api/v4/analyze?version=2019-02-11"
     ```
-
-    >Note: Replace `{apikey}` with the `apikey` of your `Visual Recognition` instance.
-
-    > Note: `50269437-a198-47eb-b29d-b63f3eac6b01` is the custom model ID. Replace it with your custom model ID which can be found on the `Overview` tab of your custom model.
 
     >Note: `<PATH of your downloaded repo folder>/intro-visual-recognition-object-detection/data/ThumbUp-test.jpeg` and `<PATH of your downloaded repo folder>/intro-visual-recognition-object-detection/data/ThumbDown-test.jpeg` are the testing images on your local machine. They are part of this repo and should have been downloaded to your machine.
 
@@ -372,7 +382,7 @@ To call your custom model API in `Node.js` application,
 
     > Note: Replace `{apikey}` with the `apikey` of your `Visual Recognition` instance that you retrieved in the previous section.
 
-    > Note: Replace `{url}` with the `url` of your `Visual Recognition` instance that you retrieved in the previous section..
+    > Note: Replace `{url}` with the `url` of your `Visual Recognition` instance that you retrieved in the previous section.
 
     > Note: Replace `{model_id}` with your custom model ID. It can be found on the `Overview` tab of your custom model. 
     
